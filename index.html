@@ -2,7 +2,6 @@
 <html lang="hu">
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-<link
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,27 +31,23 @@ html, body {
 }
 
 body {
-  font-family: "Google Sans Code", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background:black;
   color:white;
   scroll-behavior:smooth;
-}
-  .logo img {
-  height:40px;
-  width:auto;
-  display:block;
 }
 
 /* HEADER */
 header {
   background: transparent;
-  padding:16px;
+  padding:20px 0;
   position:fixed;
   top:0;
   left:0;
   width:100%;
   z-index:1000;
   transition: transform 0.4s ease;
+  backdrop-filter: blur(10px);
 }
 
 .header-container {
@@ -64,9 +59,10 @@ header {
   padding:0 20px;
 }
 
-.logo {
-  font-size:24px;
-  font-weight:bold;
+.logo img {
+  height:40px;
+  width:auto;
+  display:block;
 }
 
 nav ul {
@@ -141,7 +137,6 @@ nav a:hover::after {
   gap:20px;
 }
 
-/* 🔥 FONT CSAK IDE */
 .hero-content h1 {
   font-family: "Shadows Into Light", cursive;
   font-size:64px;
@@ -264,7 +259,9 @@ section {
 .contact-icons img:hover {
   transform:scale(1.2);
 }
-  footer {
+
+/* FOOTER */
+footer {
   text-align:center;
   padding:20px;
   background:black;
@@ -289,7 +286,6 @@ section {
   </div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <video autoplay muted loop playsinline preload="auto">
     <source src="videok/loop.mp4" type="video/mp4">
@@ -308,7 +304,6 @@ section {
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about" class="about fade-in">
   <div class="about-image">
     <img src="kepek/en.jpg" alt="">
@@ -319,7 +314,6 @@ section {
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="fade-in">
   <h2 style="text-align:center;">Kontakt</h2>
 
@@ -342,16 +336,25 @@ const observer = new IntersectionObserver(entries => {
 
 elements.forEach(el => observer.observe(el));
 
-let last = 0;
+let lastScroll = 0;
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
-  header.style.transform = window.scrollY > last ? "translateY(-100%)" : "translateY(0)";
-  last = window.scrollY;
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    header.style.transform = "translateY(-100%)";
+  } else {
+    header.style.transform = "translateY(0)";
+  }
+
+  lastScroll = currentScroll;
 });
 </script>
+
 <footer>
   <p>© 2026 Dobos Tibor – Minden jog fenntartva</p>
 </footer>
+
 </body>
 </html>
