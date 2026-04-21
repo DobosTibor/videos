@@ -257,7 +257,57 @@ section {
 .contact-icons img:hover {
   transform:scale(1.2);
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+}
 
+.dropbtn {
+  background: transparent;
+  color: white;
+  border: 1px solid rgb(118,69,255);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.dropbtn:hover {
+  background: rgb(118,69,255);
+  color: black;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0,0,0,0.9);
+  min-width: 160px;
+  border: 1px solid rgb(118,69,255);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1001;
+  top: 110%;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(118,69,255);
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 /* FOOTER */
 footer {
   text-align:center;
@@ -275,6 +325,12 @@ footer {
 <header>
   <div class="header-container">
     <div class="logo"><img src="kepek/logo.png" alt=""></div>
+    <div class="dropdown">
+  <button class="dropbtn">Menü</button>
+  <div class="dropdown-content">
+    <a href="#about">Rólam</a>
+    <a href="#contact">Kontakt</a>
+  </div>
     <nav>
       <ul>
         <li><a href="#about">Rólam</a></li>
